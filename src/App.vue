@@ -1,7 +1,7 @@
 <template>
-  <Header />
+  <HeaderC />
   <div class="container">
-    <Balance :total="total" />
+    <BalanceC :total="total" />
     <IncomeExpenses />
     <TransactionList v-bind:transactions="transactions" />
     <AddTransaction />
@@ -9,8 +9,8 @@
 </template>
 
 <script setup>
-import Header from './components/Header.vue';
-import Balance from './components/Balance.vue';
+import HeaderC from './components/HeaderC.vue';
+import BalanceC from './components/BalanceC.vue';
 import IncomeExpenses from './components/IncomeExpenses.vue';
 import TransactionList from './components/TransactionList.vue';
 import AddTransaction from './components/AddTransaction.vue';
@@ -26,6 +26,6 @@ const transactions = ref([
 const total = computed(() => {
   return transactions.value.reduce((acc, transaction) => {
     return acc + transaction.amount;
-  });
+  }, 0);
 });
 </script>
