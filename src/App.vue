@@ -2,7 +2,7 @@
   <HeaderC />
   <div class="container">
     <Balance :total="total" />
-    <IncomeExpenses :income="income" :expenses="expenses" />
+    <IncomeExpenses v-bind:income="+income" v-bind:expenses="+expenses" />
     <TransactionList v-bind:transactions="transactions" />
     <AddTransaction />
   </div>
@@ -37,19 +37,18 @@ const income = computed(() => {
     .filter((transaction) => transaction.amount > 0)
     .reduce((acc, transaction) => {
       return acc + transaction.amount;
-    }, 0);
+    }, 0)
+    .toFixed(2);
 });
 
 //Get Expenses
 
 const expenses = computed(() => {
-  return (
-    transactions.value <
-    (0)
-      .filter((transaction) => transaction.amount < 0)
-      .reduce((acc, transaction) => {
-        return acc + transaction.amount;
-      })
-  );
+  return transactions.value
+    .filter((transaction) => transaction.amount < 0)
+    .reduce((acc, transaction) => {
+      return acc + transaction.amount;
+    }, 0)
+    .toFixed(2);
 });
 </script>
