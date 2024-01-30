@@ -14,7 +14,6 @@
   </ul>
 </template>
 <script setup>
-// import { defineProps } from 'vue';
 defineProps({
   transactions: {
     type: Array,
