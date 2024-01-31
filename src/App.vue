@@ -1,10 +1,10 @@
 <template>
-  <HeaderC />
+  <Header />
   <div class="container">
-    <Balance :total="total" />
+    <Balance :total="+total" />
     <IncomeExpenses v-bind:income="+income" v-bind:expenses="+expenses" />
     <TransactionList v-bind:transactions="transactions" />
-    <AddTransaction />
+    <AddTransaction @transactionSubmitted="handleTransactionSubmitted" />
   </div>
 </template>
 
@@ -41,7 +41,7 @@ const income = computed(() => {
     .toFixed(2);
 });
 
-//Get Expenses
+// Get Expenses
 
 const expenses = computed(() => {
   return transactions.value
@@ -51,4 +51,8 @@ const expenses = computed(() => {
     }, 0)
     .toFixed(2);
 });
+
+const handleTransactionSubmitted = (transactionData) => {
+  console.log(transactionData);
+};
 </script>
